@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Runtime;
@@ -28,6 +29,8 @@ namespace CustomKeyBoard
             kv = (KeyboardView)LayoutInflater.Inflate(Resource.Layout.keyboard, null);
             keyboard = new Keyboard(this, Resource.Xml.qwerty);
             kv.Keyboard = keyboard;
+            
+            kv.SetPadding(5,5,5,5);
             kv.OnKeyboardActionListener = this;
 
             return kv;
@@ -38,6 +41,7 @@ namespace CustomKeyBoard
         public void OnKey([GeneratedEnum] Android.Views.Keycode primaryCode, [GeneratedEnum] Android.Views.Keycode[] keyCodes)
         {
             // throw new System.NotImplementedException();
+            VibrateOnKey(15);
             var ic = CurrentInputConnection;//to get current input connection
             
             if (ic == null)
@@ -55,7 +59,7 @@ namespace CustomKeyBoard
                         ic.CommitText("", 1);
                     }
                     break;
-                case (Android.Views.Keycode.CapsLock):
+                case (Android.Views.Keycode.CapsLock)://To toggle caps lock
 
 
                     if (!CapsFlag)//caps lock was off
@@ -71,20 +75,45 @@ namespace CustomKeyBoard
                         kv.OnKeyboardActionListener = this;
                         CapsFlag = false;
                     }
-
-                   
-                    
                     break;
+                case (Android.Views.Keycode.S)://this is because ASCII value 115 for s is same as android enum for caps lock
+                {
+                    ic.CommitText("s", 1);
+                        break;
+                }
+                case (Android.Views.Keycode.C)://this is because ASCII value 115 for C is same as android enum for backspace
+                {
+                    ic.CommitText("C", 1);
+                    break;
+                }
 
                 default:
                     char code = (char)(primaryCode);
+                   
                     ic.CommitText(code.ToString(), 1);// to provides the keystroke to input area according to ascai value of code
+                   
                     break;
             }
 
 
         }
-        public void OnPress(int primaryCode) { }
+        // to vibrate on key press
+        private void VibrateOnKey(int ms)
+        {
+            if (Build.VERSION.SdkInt >= (BuildVersionCodes) 26)
+            {
+                ((Vibrator)GetSystemService(VibratorService)).Vibrate(VibrationEffect.CreateOneShot(ms, 2));
+            }
+            else
+            {
+                ((Vibrator)GetSystemService(VibratorService)).Vibrate(ms);
+            }
+        }
+
+        public void OnPress(int primaryCode)
+        {
+          //  VibrateOnKey(20);
+        }
 
        
         public void OnRelease(int primaryCode) { }

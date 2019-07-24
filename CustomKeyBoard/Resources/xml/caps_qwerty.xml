@@ -2,9 +2,11 @@
 <Keyboard
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:keyWidth="10%p"
-  android:keyHeight="60dp"
-  android:verticalGap="0px">
-  <Row>
+  android:keyHeight="45dp"
+  android:verticalGap="5px"
+ >
+  <Row></Row>
+  <Row android:keyHeight="35dp">
     <Key android:codes="49" android:keyLabel="1" android:keyEdgeFlags="left"/>
     <Key android:codes="50" android:keyLabel="2"/>
     <Key android:codes="51" android:keyLabel="3"/>
@@ -25,33 +27,34 @@
     <Key android:codes="84" android:keyLabel="T" />
     <Key android:codes="89" android:keyLabel="Y" />
     <Key android:codes="85" android:keyLabel="U" />
-    <Key android:codes="" android:keyLabel="I" />
-    <Key android:codes="111" android:keyLabel="O" />
-    <Key android:codes="112" android:keyLabel="P" android:keyEdgeFlags="right"/>
+    <Key android:codes="73" android:keyLabel="I" />
+    <Key android:codes="79" android:keyLabel="O" />
+    <Key android:codes="80" android:keyLabel="P" android:keyEdgeFlags="right"/>
   </Row>
-  <Row>
-    <Key android:codes="97" android:keyLabel="A" android:keyEdgeFlags="left"/>
-    <Key android:codes="115" android:keyLabel="S" />
-    <Key android:codes="100" android:keyLabel="D" />
-    <Key android:codes="102" android:keyLabel="F" />
-    <Key android:codes="103" android:keyLabel="G" />
-    <Key android:codes="104" android:keyLabel="H" />
-    <Key android:codes="106" android:keyLabel="J" />
-    <Key android:codes="107" android:keyLabel="K" />
-    <Key android:codes="108" android:keyLabel="L" android:keyEdgeFlags="right"/>
+  <Row  android:horizontalGap="10px">
+    <Key android:codes="65" android:keyLabel="A" android:keyEdgeFlags="left"/>
+    <Key android:codes="83" android:keyLabel="S" />
+    <Key android:codes="68" android:keyLabel="D" />
+    <Key android:codes="70" android:keyLabel="F" />
+    <Key android:codes="71" android:keyLabel="G" />
+    <Key android:codes="72" android:keyLabel="H" />
+    <Key android:codes="74" android:keyLabel="J" />
+    <Key android:codes="75" android:keyLabel="K" />
+    <Key android:codes="76" android:keyLabel="L" android:keyEdgeFlags="right"/>
 
   </Row>
   <Row>
 
-    <Key android:codes="115" android:keyLabel="↑" android:keyEdgeFlags="left"/>
+    <Key android:codes="115" android:keyLabel=" ↑ " android:keyEdgeFlags="left"/>
     <!--!caps lock key handel in code-->
-    <Key android:codes="115" android:keyLabel="Z" />
-    <Key android:codes="100" android:keyLabel="X" />
-    <Key android:codes="102" android:keyLabel="C" />
-    <Key android:codes="103" android:keyLabel="V" />
-    <Key android:codes="104" android:keyLabel="B" />
-    <Key android:codes="106" android:keyLabel="N" />
-    <Key android:codes="107" android:keyLabel="M" />
+    <Key android:codes="90" android:keyLabel="Z" />
+    <Key android:codes="88" android:keyLabel="X" />
+    <Key android:codes="31" android:keyLabel="C" />
+    <Key android:codes="86" android:keyLabel="V" />
+    <Key android:codes="66" android:keyLabel="B" />
+    <Key android:codes="78" android:keyLabel="N" />
+    <Key android:codes="77" android:keyLabel="M" />
+
     <Key android:codes="67" android:keyLabel="◄"
          android:keyEdgeFlags="right"  android:keyWidth="20%p"
          android:isRepeatable="true"
@@ -59,7 +62,7 @@
     <!--Delte Key-->
 
   </Row>
-  <Row android:gravity="center">
+  <Row android:gravity="center"  android:horizontalGap="10px">
     <!--!experimental this line is-->
 
     <Key android:codes="44" android:keyLabel="," android:keyEdgeFlags="left"/>
@@ -70,12 +73,13 @@
 
     <Key android:codes="46" android:keyLabel="." />
     <Key android:codes="10"
-         android:keyLabel="↵"
+         android:keyLabel="Done"
          android:keyWidth="30%p"
 
          android:keyEdgeFlags="right"/>
     <!--!Enter Key- confusion here about the code-->
   </Row>
+
 
 
 </Keyboard>

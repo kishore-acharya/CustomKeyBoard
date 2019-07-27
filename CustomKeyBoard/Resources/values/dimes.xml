@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <dimen name="number_key_height">55dip</dimen>
+  <dimen name="default_key_height">55dip</dimen>
+  <dimen name="top_blank_row_height">155dip</dimen>
+  <dimen name="top_blank_row_vertical_gap">155dip</dimen>
+  <dimen name="bottom_blank_row_height">155dip</dimen>
+  <dimen name="bottom_blank_row_width">155dip</dimen>
+  <dimen name="function_key_height">35dp</dimen>
+  <dimen name="default_vertical_gap">155dip</dimen>
+  <dimen name="default_horizontal_gap">155dip</dimen>
+
+</resources>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  
+  <integer name="code_0">48</integer>
+  <integer name="code_1">49</integer>
+  <integer name="code_2">50</integer>
+  <integer name="code_3">51</integer>
+  <integer name="code_4">52</integer>
+  <integer name="code_5">53</integer>
+  <integer name="code_6">54</integer>
+  <integer name="code_7">55</integer>
+  <integer name="code_8">56</integer>
+  <integer name="code_9">57</integer>
+
+  <integer name="code_q">49</integer>
+  <integer name="code_w">49</integer>
+  <integer name="code_e">49</integer>
+  <integer name="code_r">49</integer>
+  <integer name="code_t">49</integer>
+  <integer name="code_y">49</integer>
+  <integer name="code_u">49</integer>
+  <integer name="code_i">49</integer>
+  <integer name="code_o">49</integer>
+  <integer name="code_p">49</integer>
+  <integer name="code_a">49</integer>
+  <integer name="code_s">49</integer>
+  <integer name="code_d">49</integer>
+  <integer name="code_f">49</integer>
+  <integer name="code_g">49</integer>
+  <integer name="code_h">49</integer>
+  <integer name="code_j">49</integer>
+  <integer name="code_k">49</integer>
+  <integer name="code_l">49</integer>
+  <integer name="code_z">49</integer>
+  <integer name="code_x">49</integer>
+  <integer name="code_c">49</integer>
+  <integer name="code_v">49</integer>
+  <integer name="code_b">49</integer>
+  <integer name="code_n">49</integer>
+  <integer name="code_m">49</integer>
+  
+  
+  
+
+   
+  <integer name="code_dot">49</integer>
+  <integer name="code_comma">49</integer>
+  
+  <integer name="code_symbols">1115</integer>
+  <integer name="code_caps">115</integer>
+  <integer name="code_space">32</integer>
+  <integer name="code_del">67</integer>
+  <integer name="code_done">10</integer>
+</resources>

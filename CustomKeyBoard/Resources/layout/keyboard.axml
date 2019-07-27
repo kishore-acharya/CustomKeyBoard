@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.inputmethodservice.KeyboardView
-xmlns:android="http://schemas.android.com/apk/res/android"
+
+<CustomKeyBoard.KishoreKeyboardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/Keyboard"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:keyPreviewLayout="@layout/KeyPreview"
+	android:keyPreviewHeight="50dp"
+	android:background="@color/keyboard_background_color"
 	android:keyBackground="@drawable/key_background"
-
 	android:keyTextColor="@android:color/white"
 	android:layout_alignParentBottom="true"
+	
 	 />
+
+
+
+

@@ -1187,44 +1187,44 @@ namespace CustomKeyBoard
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0d004f
-			public const int abc_background_cache_hint_selector_material_dark = 2131558479;
-			
-			// aapt resource value: 0x7f0d0050
-			public const int abc_background_cache_hint_selector_material_light = 2131558480;
-			
-			// aapt resource value: 0x7f0d0051
-			public const int abc_btn_colored_borderless_text_material = 2131558481;
-			
 			// aapt resource value: 0x7f0d0052
-			public const int abc_btn_colored_text_material = 2131558482;
+			public const int abc_background_cache_hint_selector_material_dark = 2131558482;
 			
 			// aapt resource value: 0x7f0d0053
-			public const int abc_color_highlight_material = 2131558483;
+			public const int abc_background_cache_hint_selector_material_light = 2131558483;
 			
 			// aapt resource value: 0x7f0d0054
-			public const int abc_hint_foreground_material_dark = 2131558484;
+			public const int abc_btn_colored_borderless_text_material = 2131558484;
 			
 			// aapt resource value: 0x7f0d0055
-			public const int abc_hint_foreground_material_light = 2131558485;
+			public const int abc_btn_colored_text_material = 2131558485;
+			
+			// aapt resource value: 0x7f0d0056
+			public const int abc_color_highlight_material = 2131558486;
+			
+			// aapt resource value: 0x7f0d0057
+			public const int abc_hint_foreground_material_dark = 2131558487;
+			
+			// aapt resource value: 0x7f0d0058
+			public const int abc_hint_foreground_material_light = 2131558488;
 			
 			// aapt resource value: 0x7f0d0000
 			public const int abc_input_method_navigation_guard = 2131558400;
 			
-			// aapt resource value: 0x7f0d0056
-			public const int abc_primary_text_disable_only_material_dark = 2131558486;
-			
-			// aapt resource value: 0x7f0d0057
-			public const int abc_primary_text_disable_only_material_light = 2131558487;
-			
-			// aapt resource value: 0x7f0d0058
-			public const int abc_primary_text_material_dark = 2131558488;
-			
 			// aapt resource value: 0x7f0d0059
-			public const int abc_primary_text_material_light = 2131558489;
+			public const int abc_primary_text_disable_only_material_dark = 2131558489;
 			
 			// aapt resource value: 0x7f0d005a
-			public const int abc_search_url_text = 2131558490;
+			public const int abc_primary_text_disable_only_material_light = 2131558490;
+			
+			// aapt resource value: 0x7f0d005b
+			public const int abc_primary_text_material_dark = 2131558491;
+			
+			// aapt resource value: 0x7f0d005c
+			public const int abc_primary_text_material_light = 2131558492;
+			
+			// aapt resource value: 0x7f0d005d
+			public const int abc_search_url_text = 2131558493;
 			
 			// aapt resource value: 0x7f0d0001
 			public const int abc_search_url_text_normal = 2131558401;
@@ -1235,29 +1235,29 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f0d0003
 			public const int abc_search_url_text_selected = 2131558403;
 			
-			// aapt resource value: 0x7f0d005b
-			public const int abc_secondary_text_material_dark = 2131558491;
-			
-			// aapt resource value: 0x7f0d005c
-			public const int abc_secondary_text_material_light = 2131558492;
-			
-			// aapt resource value: 0x7f0d005d
-			public const int abc_tint_btn_checkable = 2131558493;
-			
 			// aapt resource value: 0x7f0d005e
-			public const int abc_tint_default = 2131558494;
+			public const int abc_secondary_text_material_dark = 2131558494;
 			
 			// aapt resource value: 0x7f0d005f
-			public const int abc_tint_edittext = 2131558495;
+			public const int abc_secondary_text_material_light = 2131558495;
 			
 			// aapt resource value: 0x7f0d0060
-			public const int abc_tint_seek_thumb = 2131558496;
+			public const int abc_tint_btn_checkable = 2131558496;
 			
 			// aapt resource value: 0x7f0d0061
-			public const int abc_tint_spinner = 2131558497;
+			public const int abc_tint_default = 2131558497;
 			
 			// aapt resource value: 0x7f0d0062
-			public const int abc_tint_switch_track = 2131558498;
+			public const int abc_tint_edittext = 2131558498;
+			
+			// aapt resource value: 0x7f0d0063
+			public const int abc_tint_seek_thumb = 2131558499;
+			
+			// aapt resource value: 0x7f0d0064
+			public const int abc_tint_spinner = 2131558500;
+			
+			// aapt resource value: 0x7f0d0065
+			public const int abc_tint_switch_track = 2131558501;
 			
 			// aapt resource value: 0x7f0d0004
 			public const int accent_material_dark = 2131558404;
@@ -1313,8 +1313,8 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f0d003c
 			public const int design_bottom_navigation_shadow_color = 2131558460;
 			
-			// aapt resource value: 0x7f0d0063
-			public const int design_error = 2131558499;
+			// aapt resource value: 0x7f0d0066
+			public const int design_error = 2131558502;
 			
 			// aapt resource value: 0x7f0d003d
 			public const int design_fab_shadow_end_color = 2131558461;
@@ -1340,8 +1340,8 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f0d0044
 			public const int design_snackbar_background_color = 2131558468;
 			
-			// aapt resource value: 0x7f0d0064
-			public const int design_tint_password_toggle = 2131558500;
+			// aapt resource value: 0x7f0d0067
+			public const int design_tint_password_toggle = 2131558503;
 			
 			// aapt resource value: 0x7f0d0012
 			public const int dim_foreground_disabled_material_dark = 2131558418;
@@ -1370,14 +1370,20 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f0d001a
 			public const int highlighted_text_material_light = 2131558426;
 			
-			// aapt resource value: 0x7f0d004e
-			public const int ic_launcher_background = 2131558478;
+			// aapt resource value: 0x7f0d0051
+			public const int ic_launcher_background = 2131558481;
+			
+			// aapt resource value: 0x7f0d0050
+			public const int key_background = 2131558480;
 			
 			// aapt resource value: 0x7f0d004a
 			public const int keyboard_background_color = 2131558474;
 			
 			// aapt resource value: 0x7f0d004b
 			public const int keyboard_divider = 2131558475;
+			
+			// aapt resource value: 0x7f0d004f
+			public const int keyboard_divider_light_grey = 2131558479;
 			
 			// aapt resource value: 0x7f0d004c
 			public const int keyboard_pressed = 2131558476;
@@ -1451,6 +1457,9 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f0d002e
 			public const int primary_text_disabled_material_light = 2131558446;
 			
+			// aapt resource value: 0x7f0d004e
+			public const int red = 2131558478;
+			
 			// aapt resource value: 0x7f0d002f
 			public const int ripple_material_dark = 2131558447;
 			
@@ -1475,11 +1484,11 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f0d0036
 			public const int switch_thumb_disabled_material_light = 2131558454;
 			
-			// aapt resource value: 0x7f0d0065
-			public const int switch_thumb_material_dark = 2131558501;
+			// aapt resource value: 0x7f0d0068
+			public const int switch_thumb_material_dark = 2131558504;
 			
-			// aapt resource value: 0x7f0d0066
-			public const int switch_thumb_material_light = 2131558502;
+			// aapt resource value: 0x7f0d0069
+			public const int switch_thumb_material_light = 2131558505;
 			
 			// aapt resource value: 0x7f0d0037
 			public const int switch_thumb_normal_material_dark = 2131558455;
@@ -1731,6 +1740,12 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f08000a
 			public const int abc_text_size_title_material_toolbar = 2131230730;
 			
+			// aapt resource value: 0x7f08009f
+			public const int bottom_blank_row_height = 2131230879;
+			
+			// aapt resource value: 0x7f0800a0
+			public const int bottom_blank_row_width = 2131230880;
+			
 			// aapt resource value: 0x7f08008b
 			public const int compat_button_inset_horizontal_material = 2131230859;
 			
@@ -1745,6 +1760,15 @@ namespace CustomKeyBoard
 			
 			// aapt resource value: 0x7f08008f
 			public const int compat_control_corner_material = 2131230863;
+			
+			// aapt resource value: 0x7f0800a3
+			public const int default_horizontal_gap = 2131230883;
+			
+			// aapt resource value: 0x7f08009c
+			public const int default_key_height = 2131230876;
+			
+			// aapt resource value: 0x7f0800a2
+			public const int default_vertical_gap = 2131230882;
 			
 			// aapt resource value: 0x7f080069
 			public const int design_appbar_elevation = 2131230825;
@@ -1875,6 +1899,9 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f080002
 			public const int fastscroll_minimum_range = 2131230722;
 			
+			// aapt resource value: 0x7f0800a1
+			public const int function_key_height = 2131230881;
+			
 			// aapt resource value: 0x7f080052
 			public const int highlight_alpha_material_colored = 2131230802;
 			
@@ -1950,6 +1977,9 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f08009a
 			public const int notification_top_pad_large_text = 2131230874;
 			
+			// aapt resource value: 0x7f08009b
+			public const int number_key_height = 2131230875;
+			
 			// aapt resource value: 0x7f080059
 			public const int tooltip_corner_radius = 2131230809;
 			
@@ -1973,6 +2003,12 @@ namespace CustomKeyBoard
 			
 			// aapt resource value: 0x7f080060
 			public const int tooltip_y_offset_touch = 2131230816;
+			
+			// aapt resource value: 0x7f08009d
+			public const int top_blank_row_height = 2131230877;
+			
+			// aapt resource value: 0x7f08009e
+			public const int top_blank_row_vertical_gap = 2131230878;
 			
 			static Dimension()
 			{
@@ -2239,101 +2275,110 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f02006e
-			public const int avd_hide_password_1 = 2130837614;
+			// aapt resource value: 0x7f020071
+			public const int avd_hide_password_1 = 2130837617;
 			
-			// aapt resource value: 0x7f02006f
-			public const int avd_hide_password_2 = 2130837615;
+			// aapt resource value: 0x7f020072
+			public const int avd_hide_password_2 = 2130837618;
 			
-			// aapt resource value: 0x7f020070
-			public const int avd_hide_password_3 = 2130837616;
+			// aapt resource value: 0x7f020073
+			public const int avd_hide_password_3 = 2130837619;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f020071
-			public const int avd_show_password_1 = 2130837617;
+			// aapt resource value: 0x7f020074
+			public const int avd_show_password_1 = 2130837620;
 			
-			// aapt resource value: 0x7f020072
-			public const int avd_show_password_2 = 2130837618;
+			// aapt resource value: 0x7f020075
+			public const int avd_show_password_2 = 2130837621;
 			
-			// aapt resource value: 0x7f020073
-			public const int avd_show_password_3 = 2130837619;
+			// aapt resource value: 0x7f020076
+			public const int avd_show_password_3 = 2130837622;
 			
 			// aapt resource value: 0x7f020055
-			public const int design_bottom_navigation_item_background = 2130837589;
+			public const int caps_off = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int design_fab_background = 2130837590;
+			public const int caps_on = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int design_ic_visibility = 2130837591;
+			public const int del = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int design_ic_visibility_off = 2130837592;
+			public const int design_bottom_navigation_item_background = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int design_password_eye = 2130837593;
+			public const int design_fab_background = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int design_snackbar_background = 2130837594;
+			public const int design_ic_visibility = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int key_background = 2130837595;
+			public const int design_ic_visibility_off = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int navigation_empty_icon = 2130837596;
+			public const int design_password_eye = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int normal = 2130837597;
+			public const int design_snackbar_background = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int notification_action_background = 2130837598;
+			public const int key_background = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int notification_bg = 2130837599;
+			public const int navigation_empty_icon = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int notification_bg_low = 2130837600;
+			public const int normal = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int notification_bg_low_normal = 2130837601;
+			public const int notification_action_background = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int notification_bg_low_pressed = 2130837602;
+			public const int notification_bg = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int notification_bg_normal = 2130837603;
+			public const int notification_bg_low = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int notification_bg_normal_pressed = 2130837604;
+			public const int notification_bg_low_normal = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int notification_icon_background = 2130837605;
-			
-			// aapt resource value: 0x7f02006c
-			public const int notification_template_icon_bg = 2130837612;
-			
-			// aapt resource value: 0x7f02006d
-			public const int notification_template_icon_low_bg = 2130837613;
+			public const int notification_bg_low_pressed = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int notification_tile_bg = 2130837606;
+			public const int notification_bg_normal = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int notify_panel_notification_icon_bg = 2130837607;
+			public const int notification_bg_normal_pressed = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int pressed = 2130837608;
+			public const int notification_icon_background = 2130837608;
+			
+			// aapt resource value: 0x7f02006f
+			public const int notification_template_icon_bg = 2130837615;
+			
+			// aapt resource value: 0x7f020070
+			public const int notification_template_icon_low_bg = 2130837616;
 			
 			// aapt resource value: 0x7f020069
-			public const int round_bg = 2130837609;
+			public const int notification_tile_bg = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int tooltip_frame_dark = 2130837610;
+			public const int notify_panel_notification_icon_bg = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int tooltip_frame_light = 2130837611;
+			public const int pressed = 2130837611;
+			
+			// aapt resource value: 0x7f02006c
+			public const int round_bg = 2130837612;
+			
+			// aapt resource value: 0x7f02006d
+			public const int tooltip_frame_dark = 2130837613;
+			
+			// aapt resource value: 0x7f02006e
+			public const int tooltip_frame_light = 2130837614;
 			
 			static Drawable()
 			{
@@ -2612,14 +2657,14 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f090061
 			public const int list_item = 2131296353;
 			
-			// aapt resource value: 0x7f0900af
-			public const int masked = 2131296431;
+			// aapt resource value: 0x7f0900b0
+			public const int masked = 2131296432;
 			
 			// aapt resource value: 0x7f0900a0
 			public const int media_actions = 2131296416;
 			
-			// aapt resource value: 0x7f0900ad
-			public const int message = 2131296429;
+			// aapt resource value: 0x7f0900ae
+			public const int message = 2131296430;
 			
 			// aapt resource value: 0x7f090031
 			public const int middle = 2131296305;
@@ -2810,6 +2855,9 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f090069
 			public const int textSpacerNoTitle = 2131296361;
 			
+			// aapt resource value: 0x7f0900ad
+			public const int textView1 = 2131296429;
+			
 			// aapt resource value: 0x7f090098
 			public const int text_input_password_toggle = 2131296408;
 			
@@ -2867,8 +2915,8 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900ae
-			public const int visible = 2131296430;
+			// aapt resource value: 0x7f0900af
+			public const int visible = 2131296431;
 			
 			// aapt resource value: 0x7f09003c
 			public const int withText = 2131296316;
@@ -2903,6 +2951,135 @@ namespace CustomKeyBoard
 			
 			// aapt resource value: 0x7f0e0002
 			public const int cancel_button_image_alpha = 2131623938;
+			
+			// aapt resource value: 0x7f0e000a
+			public const int code_0 = 2131623946;
+			
+			// aapt resource value: 0x7f0e000b
+			public const int code_1 = 2131623947;
+			
+			// aapt resource value: 0x7f0e000c
+			public const int code_2 = 2131623948;
+			
+			// aapt resource value: 0x7f0e000d
+			public const int code_3 = 2131623949;
+			
+			// aapt resource value: 0x7f0e000e
+			public const int code_4 = 2131623950;
+			
+			// aapt resource value: 0x7f0e000f
+			public const int code_5 = 2131623951;
+			
+			// aapt resource value: 0x7f0e0010
+			public const int code_6 = 2131623952;
+			
+			// aapt resource value: 0x7f0e0011
+			public const int code_7 = 2131623953;
+			
+			// aapt resource value: 0x7f0e0012
+			public const int code_8 = 2131623954;
+			
+			// aapt resource value: 0x7f0e0013
+			public const int code_9 = 2131623955;
+			
+			// aapt resource value: 0x7f0e001e
+			public const int code_a = 2131623966;
+			
+			// aapt resource value: 0x7f0e002b
+			public const int code_b = 2131623979;
+			
+			// aapt resource value: 0x7f0e0029
+			public const int code_c = 2131623977;
+			
+			// aapt resource value: 0x7f0e0031
+			public const int code_caps = 2131623985;
+			
+			// aapt resource value: 0x7f0e002f
+			public const int code_comma = 2131623983;
+			
+			// aapt resource value: 0x7f0e0020
+			public const int code_d = 2131623968;
+			
+			// aapt resource value: 0x7f0e0033
+			public const int code_del = 2131623987;
+			
+			// aapt resource value: 0x7f0e0034
+			public const int code_done = 2131623988;
+			
+			// aapt resource value: 0x7f0e002e
+			public const int code_dot = 2131623982;
+			
+			// aapt resource value: 0x7f0e0016
+			public const int code_e = 2131623958;
+			
+			// aapt resource value: 0x7f0e0021
+			public const int code_f = 2131623969;
+			
+			// aapt resource value: 0x7f0e0022
+			public const int code_g = 2131623970;
+			
+			// aapt resource value: 0x7f0e0023
+			public const int code_h = 2131623971;
+			
+			// aapt resource value: 0x7f0e001b
+			public const int code_i = 2131623963;
+			
+			// aapt resource value: 0x7f0e0024
+			public const int code_j = 2131623972;
+			
+			// aapt resource value: 0x7f0e0025
+			public const int code_k = 2131623973;
+			
+			// aapt resource value: 0x7f0e0026
+			public const int code_l = 2131623974;
+			
+			// aapt resource value: 0x7f0e002d
+			public const int code_m = 2131623981;
+			
+			// aapt resource value: 0x7f0e002c
+			public const int code_n = 2131623980;
+			
+			// aapt resource value: 0x7f0e001c
+			public const int code_o = 2131623964;
+			
+			// aapt resource value: 0x7f0e001d
+			public const int code_p = 2131623965;
+			
+			// aapt resource value: 0x7f0e0014
+			public const int code_q = 2131623956;
+			
+			// aapt resource value: 0x7f0e0017
+			public const int code_r = 2131623959;
+			
+			// aapt resource value: 0x7f0e001f
+			public const int code_s = 2131623967;
+			
+			// aapt resource value: 0x7f0e0032
+			public const int code_space = 2131623986;
+			
+			// aapt resource value: 0x7f0e0030
+			public const int code_symbols = 2131623984;
+			
+			// aapt resource value: 0x7f0e0018
+			public const int code_t = 2131623960;
+			
+			// aapt resource value: 0x7f0e001a
+			public const int code_u = 2131623962;
+			
+			// aapt resource value: 0x7f0e002a
+			public const int code_v = 2131623978;
+			
+			// aapt resource value: 0x7f0e0015
+			public const int code_w = 2131623957;
+			
+			// aapt resource value: 0x7f0e0028
+			public const int code_x = 2131623976;
+			
+			// aapt resource value: 0x7f0e0019
+			public const int code_y = 2131623961;
+			
+			// aapt resource value: 0x7f0e0027
+			public const int code_z = 2131623975;
 			
 			// aapt resource value: 0x7f0e0003
 			public const int config_tooltipAnimTime = 2131623939;
@@ -3116,10 +3293,13 @@ namespace CustomKeyBoard
 			public const int select_dialog_singlechoice_material = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int support_simple_spinner_dropdown_item = 2130968637;
+			public const int strip = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int tooltip = 2130968638;
+			public const int support_simple_spinner_dropdown_item = 2130968638;
+			
+			// aapt resource value: 0x7f04003f
+			public const int tooltip = 2130968639;
 			
 			static Layout()
 			{

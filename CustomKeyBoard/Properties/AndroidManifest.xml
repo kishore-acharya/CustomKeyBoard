@@ -12,4 +12,11 @@
                android:supportsRtl="true" 
                android:theme="@style/AppTheme">
   </application>
+  <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeViewFocused|typeViewClicked"
+    android:packageNames="com.google.android.googlequicksearchbox"
+    android:accessibilityFeedbackType="feedbackAllMask"
+    android:notificationTimeout="100"
+    android:canRetrieveWindowContent="true"
+    android:canRequestEnhancedWebAccessibility="true"/>
 </manifest>

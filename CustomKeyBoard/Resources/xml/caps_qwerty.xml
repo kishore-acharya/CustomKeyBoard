@@ -1,13 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Keyboard
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:keyWidth="10%p"
+  android:keyWidth="8%p"
   android:keyHeight="45dp"
-  android:verticalGap="5px"
- >
-  <Row></Row>
-  <Row android:keyHeight="35dp">
-    <Key android:codes="49" android:keyLabel="1" android:keyEdgeFlags="left"/>
+  android:verticalGap="9dp"
+  android:horizontalGap="2%p">
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true">fsdfasdfa</TextView>
+  
+  <Row android:keyHeight="20dp" android:verticalGap="4dp"></Row>
+  <!--for blank row above-->
+  <Row  android:keyHeight="30dp" >
+    <Key android:codes="@integer/code_1" android:keyLabel="1" android:keyEdgeFlags="left" />
     <Key android:codes="50" android:keyLabel="2"/>
     <Key android:codes="51" android:keyLabel="3"/>
     <Key android:codes="52" android:keyLabel="4"/>
@@ -31,8 +38,8 @@
     <Key android:codes="79" android:keyLabel="O" />
     <Key android:codes="80" android:keyLabel="P" android:keyEdgeFlags="right"/>
   </Row>
-  <Row  android:horizontalGap="10px">
-    <Key android:codes="65" android:keyLabel="A" android:keyEdgeFlags="left"/>
+  <Row  >
+    <Key android:codes="65" android:keyLabel="A" android:keyEdgeFlags="left" android:horizontalGap="6%p"/>
     <Key android:codes="83" android:keyLabel="S" />
     <Key android:codes="68" android:keyLabel="D" />
     <Key android:codes="70" android:keyLabel="F" />
@@ -45,9 +52,14 @@
   </Row>
   <Row>
 
-    <Key android:codes="115" android:keyLabel=" ↑ " android:keyEdgeFlags="left"/>
+    <Key android:codes="115"  
+           android:keyEdgeFlags="left" 
+           android:keyWidth="13%p" 
+           
+           android:keyIcon="@drawable/caps_on"
+          />
     <!--!caps lock key handel in code-->
-    <Key android:codes="90" android:keyLabel="Z" />
+    <Key android:codes="90" android:keyLabel="Z" android:horizontalGap="2%p"/>
     <Key android:codes="88" android:keyLabel="X" />
     <Key android:codes="31" android:keyLabel="C" />
     <Key android:codes="86" android:keyLabel="V" />
@@ -55,30 +67,36 @@
     <Key android:codes="78" android:keyLabel="N" />
     <Key android:codes="77" android:keyLabel="M" />
 
-    <Key android:codes="67" android:keyLabel="◄"
-         android:keyEdgeFlags="right"  android:keyWidth="20%p"
+    <Key android:codes="67" 
+         android:keyEdgeFlags="right"  android:keyWidth="13%p"
          android:isRepeatable="true"
+         android:isModifier="true"
+         android:keyIcon="@drawable/del"
          />
     <!--Delte Key-->
 
   </Row>
-  <Row android:gravity="center"  android:horizontalGap="10px">
-    <!--!experimental this line is-->
+  <Row   android:keyHeight="@dimen/function_key_height">
 
-    <Key android:codes="44" android:keyLabel="," android:keyEdgeFlags="left"/>
+    <Key android:codes="@integer/code_symbols" android:keyLabel="!#1" android:keyEdgeFlags="left"/> <!--symbol key-->
+
+    <Key android:codes="44" android:keyLabel=","/>
 
     <Key android:codes="32" android:keyLabel="   "
-         android:keyWidth="40%p" />
+         android:keyWidth="39%p" />
     <!--!space key-->
 
     <Key android:codes="46" android:keyLabel="." />
+
     <Key android:codes="10"
          android:keyLabel="Done"
-         android:keyWidth="30%p"
-
+         android:keyWidth="26%p"
+         android:isModifier="true"
          android:keyEdgeFlags="right"/>
     <!--!Enter Key- confusion here about the code-->
   </Row>
+  <Row android:keyHeight="1dp" android:verticalGap="4dp"/>
+
 
 
 

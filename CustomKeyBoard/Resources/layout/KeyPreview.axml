@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="20dp"
-    android:layout_height="10dp"
     android:gravity="center"
     android:background="@drawable/round_bg"
     android:textColor="@android:color/black"
-    android:textSize="20dp"
-	android:padding="1dp"
-	android:textStyle="bold">
-	
-</TextView>
+    android:textSize="30dp"
+	android:textStyle="bold"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	/>

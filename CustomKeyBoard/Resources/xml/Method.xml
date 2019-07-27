@@ -2,6 +2,7 @@
 <input-method xmlns:android="http://schemas.android.com/apk/res/android">
   <subtype
     android:label="Mera Keyboard"
-    android:imeSubtypeLocale="en_US"
+   
     android:imeSubtypeMode="keyboard"/>
 </input-method>
+<!--android:imeSubtypeLocale="en_US"-->

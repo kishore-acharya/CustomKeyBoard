@@ -1740,6 +1740,12 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f08000a
 			public const int abc_text_size_title_material_toolbar = 2131230730;
 			
+			// aapt resource value: 0x7f0800a5
+			public const int action_button_min_height_material = 2131230885;
+			
+			// aapt resource value: 0x7f0800a4
+			public const int action_button_min_width_material = 2131230884;
+			
 			// aapt resource value: 0x7f08009f
 			public const int bottom_blank_row_height = 2131230879;
 			
@@ -2275,26 +2281,26 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f020071
-			public const int avd_hide_password_1 = 2130837617;
-			
 			// aapt resource value: 0x7f020072
-			public const int avd_hide_password_2 = 2130837618;
+			public const int avd_hide_password_1 = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int avd_hide_password_3 = 2130837619;
+			public const int avd_hide_password_2 = 2130837619;
+			
+			// aapt resource value: 0x7f020074
+			public const int avd_hide_password_3 = 2130837620;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f020074
-			public const int avd_show_password_1 = 2130837620;
-			
 			// aapt resource value: 0x7f020075
-			public const int avd_show_password_2 = 2130837621;
+			public const int avd_show_password_1 = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int avd_show_password_3 = 2130837622;
+			public const int avd_show_password_2 = 2130837622;
+			
+			// aapt resource value: 0x7f020077
+			public const int avd_show_password_3 = 2130837623;
 			
 			// aapt resource value: 0x7f020055
 			public const int caps_off = 2130837589;
@@ -2356,11 +2362,11 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f020068
 			public const int notification_icon_background = 2130837608;
 			
-			// aapt resource value: 0x7f02006f
-			public const int notification_template_icon_bg = 2130837615;
-			
 			// aapt resource value: 0x7f020070
-			public const int notification_template_icon_low_bg = 2130837616;
+			public const int notification_template_icon_bg = 2130837616;
+			
+			// aapt resource value: 0x7f020071
+			public const int notification_template_icon_low_bg = 2130837617;
 			
 			// aapt resource value: 0x7f020069
 			public const int notification_tile_bg = 2130837609;
@@ -2369,16 +2375,19 @@ namespace CustomKeyBoard
 			public const int notify_panel_notification_icon_bg = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int pressed = 2130837611;
+			public const int pass_button = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int round_bg = 2130837612;
+			public const int pressed = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int tooltip_frame_dark = 2130837613;
+			public const int round_bg = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int tooltip_frame_light = 2130837614;
+			public const int tooltip_frame_dark = 2130837614;
+			
+			// aapt resource value: 0x7f02006f
+			public const int tooltip_frame_light = 2130837615;
 			
 			static Drawable()
 			{
@@ -2657,14 +2666,14 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f090061
 			public const int list_item = 2131296353;
 			
-			// aapt resource value: 0x7f0900b0
-			public const int masked = 2131296432;
+			// aapt resource value: 0x7f0900b1
+			public const int masked = 2131296433;
 			
 			// aapt resource value: 0x7f0900a0
 			public const int media_actions = 2131296416;
 			
-			// aapt resource value: 0x7f0900ae
-			public const int message = 2131296430;
+			// aapt resource value: 0x7f0900af
+			public const int message = 2131296431;
 			
 			// aapt resource value: 0x7f090031
 			public const int middle = 2131296305;
@@ -2704,6 +2713,9 @@ namespace CustomKeyBoard
 			
 			// aapt resource value: 0x7f09000b
 			public const int parent_matrix = 2131296267;
+			
+			// aapt resource value: 0x7f0900ad
+			public const int pass_button = 2131296429;
 			
 			// aapt resource value: 0x7f09004d
 			public const int pin = 2131296333;
@@ -2855,8 +2867,8 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f090069
 			public const int textSpacerNoTitle = 2131296361;
 			
-			// aapt resource value: 0x7f0900ad
-			public const int textView1 = 2131296429;
+			// aapt resource value: 0x7f0900ae
+			public const int textView1 = 2131296430;
 			
 			// aapt resource value: 0x7f090098
 			public const int text_input_password_toggle = 2131296408;
@@ -2915,8 +2927,8 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900af
-			public const int visible = 2131296431;
+			// aapt resource value: 0x7f0900b0
+			public const int visible = 2131296432;
 			
 			// aapt resource value: 0x7f09003c
 			public const int withText = 2131296316;
@@ -4626,6 +4638,9 @@ namespace CustomKeyBoard
 			
 			// aapt resource value: 0x7f0b0178
 			public const int Widget_Design_TextInputLayout = 2131427704;
+			
+			// aapt resource value: 0x7f0b0181
+			public const int Widget_Material_ActionButton = 2131427713;
 			
 			static Style()
 			{

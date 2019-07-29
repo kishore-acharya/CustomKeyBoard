@@ -5,13 +5,7 @@
   android:keyHeight="45dp"
   android:verticalGap="9dp"
   android:horizontalGap="2%p">
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_centerHorizontal="true"
-      android:layout_centerVertical="true">fsdfasdfa</TextView>
   
-  <Row android:keyHeight="20dp" android:verticalGap="4dp"></Row>
   <!--for blank row above-->
   <Row  android:keyHeight="30dp" >
     <Key android:codes="@integer/code_1" android:keyLabel="1" android:keyEdgeFlags="left" />

@@ -56,13 +56,15 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CandidateView.cs" />
     <Compile Include="KishoreKeyboardView.cs" />
+    <Compile Include="ListViewAdapter.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Models\Credentials.cs" />
     <Compile Include="PasswordManager.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DataBaseService.cs" />
+    <Compile Include="StoreCredentialsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -97,6 +99,12 @@
     <AndroidResource Include="Resources\xml\Method.xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="sqlite-net">
+      <Version>1.6.249-beta</Version>
+    </PackageReference>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.6.258-beta</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
   </ItemGroup>
   <ItemGroup>
@@ -143,7 +151,9 @@
     <AndroidResource Include="Resources\drawable\del.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <AndroidResource Include="Resources\layout\CredentialListTemplate.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\strip.axml">
@@ -152,6 +162,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\pass_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\AutofillPopUp.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\StoreCredentialsLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

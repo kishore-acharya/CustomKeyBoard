@@ -12,10 +12,10 @@ namespace CustomKeyBoard
 {
     public class ListViewAdapter : BaseAdapter<Credentials>
     {
-        private StoreCredentialsActivity storeCredentialsActivity;
+        private ManageCredentials storeCredentialsActivity;
         private List<Credentials> listSource;
 
-        public ListViewAdapter(StoreCredentialsActivity storeCredentialsActivity, List<Credentials> listSource)//gets list source from db
+        public ListViewAdapter(ManageCredentials storeCredentialsActivity, List<Credentials> listSource)//gets list source from db
         {
             this.storeCredentialsActivity = storeCredentialsActivity;
             this.listSource = listSource;
@@ -47,7 +47,7 @@ namespace CustomKeyBoard
             return null;
         }
 
-      
+     
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {

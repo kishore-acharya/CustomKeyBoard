@@ -24,6 +24,7 @@ namespace CustomKeyBoard.Services
         public DataBaseService()
         {
             CreateDatabase();
+
         }
         private List<Credentials> Allcredentials = new List<Credentials>();
         public List<Credentials> FetchAllCredentials()
@@ -31,18 +32,18 @@ namespace CustomKeyBoard.Services
 
             Allcredentials = GetAllCredentialFromDB();
 
-            //Mock Start
-            Credentials MockCred = new Credentials();
-            MockCred.UserName = "adsfkjasd";
-            MockCred.Password = "sdfjalskdf";
-            MockCred.Domain = "sfdj;alsdf";
-            List<Credentials> MockCredentialList = new List<Credentials>();
-            MockCredentialList.Add(MockCred);
-            return MockCredentialList;
-            //Mock end
+            ////Mock Start
+            //Credentials MockCred = new Credentials();
+            //MockCred.UserName = "kishore123";
+            //MockCred.Password = "password123";
+            //MockCred.Domain = "facebook.com";
+            //List<Credentials> MockCredentialList = new List<Credentials>();
+            //MockCredentialList.Add(MockCred);
+            //return MockCredentialList;
+            ////Mock end
 
             //Actual Start
-            //return Allcredentials;
+            return Allcredentials;
         }
         public void SaveCredentials(Credentials credentials)
         {
@@ -110,8 +111,12 @@ namespace CustomKeyBoard.Services
             {
                 using (SQLiteConnection connection = new SQLiteConnection(System.IO.Path.Combine(folder, DBPath)))
                 {
-                    connection.CreateTable<Credentials>();
-                    return true;
+
+                   
+                    
+                        connection.CreateTable<Credentials>();
+                        return true;
+                    
                 }
             }
             catch (SQLiteException ex)
@@ -129,7 +134,19 @@ namespace CustomKeyBoard.Services
         private void DeleteFromTableByPrimaryKey(int id)
         {
             //Todo
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = new SQLiteConnection(System.IO.Path.Combine(folder,DBPath)))
+                {
+                    connection.Query<Credentials>("DELETE FROM  Credentials Where Id=?", id);
+                    
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                throw new NotImplementedException();
+            }
+            
         }
 
         /// <summary>

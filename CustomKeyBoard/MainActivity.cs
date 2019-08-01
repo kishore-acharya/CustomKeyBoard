@@ -16,9 +16,9 @@ using System.Collections.Generic;
 
 namespace CustomKeyBoard
 {
-    [Service(Permission = "android.permission.BIND_INPUT_METHOD", Label = "Kishore Keyboard")]
-    [MetaData("android.view.im", Resource = "@xml/method")]
-    [IntentFilter(new string[] { "android.view.InputMethod" })]
+    //[Service(Permission = "android.permission.BIND_INPUT_METHOD", Label = "Kishore Keyboard")]
+    //[MetaData("android.view.im", Resource = "@xml/method")]
+    //[IntentFilter(new string[] { "android.view.InputMethod" })]
     public class MainActivity : InputMethodService, KeyboardView.IOnKeyboardActionListener
     {
 
@@ -48,9 +48,8 @@ namespace CustomKeyBoard
 
         public void LaunchCredentialActivity()
         {
-           Intent intent = new Intent(this, typeof(StoreCredentialsActivity));
-           
-           StartActivity(intent);////
+           Intent intent = new Intent(this, typeof(ManageCredentials));          
+           StartActivity(intent);
         }
 
         public override View OnCreateInputView()

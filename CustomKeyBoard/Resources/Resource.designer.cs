@@ -3415,7 +3415,10 @@ namespace CustomKeyBoard
 		{
 			
 			// aapt resource value: 0x7f0a0029
-			public const int Delte_Menue = 2131361833;
+			public const int Delete_Menue = 2131361833;
+			
+			// aapt resource value: 0x7f0a002a
+			public const int Modify_Menue = 2131361834;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int abc_action_bar_home_description = 2131361792;
@@ -3534,8 +3537,8 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f0a0025
 			public const int path_password_strike_through = 2131361829;
 			
-			// aapt resource value: 0x7f0a002a
-			public const int save = 2131361834;
+			// aapt resource value: 0x7f0a002b
+			public const int save = 2131361835;
 			
 			// aapt resource value: 0x7f0a0011
 			public const int search_menu_title = 2131361809;

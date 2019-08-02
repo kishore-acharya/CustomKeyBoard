@@ -59,7 +59,8 @@
     <Compile Include="AddCredentials.cs" />
     <Compile Include="KishoreKeyboardView.cs" />
     <Compile Include="ListViewAdapter.cs" />
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="KeyboardService.cs" />
+    <Compile Include="Models\AutofillData.cs" />
     <Compile Include="Models\Credentials.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

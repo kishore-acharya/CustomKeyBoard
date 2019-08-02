@@ -15,10 +15,11 @@ using CustomKeyBoard.Services;
 using Android.Support.V4.App;
 using Android.Content.PM;
 using static Android.Widget.AdapterView;
+using Android.Preferences;
 
 namespace CustomKeyBoard
 {
-    [Activity(Label = "ManageCredentials", MainLauncher = true)]
+    [Activity(Label = "ManageCredentials")]
 
     public class ManageCredentials :Activity
     {
@@ -26,11 +27,12 @@ namespace CustomKeyBoard
         Credentials MockCredentials = new Credentials();       
         ListView listView;
         ImageView addbutton;
-        long currentitemid;
-       
+        long currentitemid;      
         List<Credentials> listSource = new List<Credentials>();
         DataBaseService db=new DataBaseService();
+        private ListViewAdapter adapter;
         private const int _RequestCode_Add_Credentials = 23;
+        private const int _RequestCode_Modify_Credentials = 24;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -46,10 +48,10 @@ namespace CustomKeyBoard
         }
 
 
-
 		public override void OnCreateContextMenu(IContextMenu menu, View v, IContextMenuContextMenuInfo menuInfo)
 		{
-			menu.Add(Resource.String.Delte_Menue);
+			menu.Add(Resource.String.Delete_Menue);
+            menu.Add(Resource.String.Modify_Menue);
 		}
         public override bool OnContextItemSelected(IMenuItem item)//experimental
         {
@@ -58,10 +60,13 @@ namespace CustomKeyBoard
             ID = listView.GetItemIdAtPosition(info.Position);
             if (item.TitleCondensedFormatted.ToString() == "Delete")
             {
-
                 db.DeleteCredentials((int)ID);
                 LoadData();
                 return true;
+            }
+            else if (item.TitleCondensedFormatted.ToString() == "Modify")//User has selected Modify then I am passing Modify=true, and Item Id for modification
+            {
+                LaunchAddCredentialsActivity(true,(int)ID);//sending Modify=true along with item ID to modify
             }
             return false;
         }
@@ -70,44 +75,68 @@ namespace CustomKeyBoard
         private void ListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             //Todo Autofill credentials
-           
+
+            SaveSelectedPassword(listSource[e.Position].Password);
+            Finish();
+        }
+
+        private void SaveSelectedPassword(string password)
+        {
+            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(ApplicationContext);
+            ISharedPreferencesEditor editor = prefs.Edit();
+            editor.PutString("Passw0rd", password);
+            editor.Apply();        // applies changes asynchronously on newer APIs
         }
 
         private void Addbutton_Click(object sender, EventArgs e)//database entry button clicked
         {
-            //Database entry fragement
-            LaunchAddCredentialsActivity();
-            
-                      
+
+            LaunchAddCredentialsActivity(); //Database entry fragement                  
         }
 
-        private void LoadData()
-        {
-          
-            listSource = db.FetchAllCredentials();//db sends mock data for now         
-            IListAdapter adapter = new ListViewAdapter(this, listSource);
-            listView.Adapter = adapter;
-                  
-        }
-        public void ShowGenericError(string title = "This feature is under construction")
-        {
-            Toast.MakeText(this, title, Android.Widget.ToastLength.Long).Show();
-        }
-
-        public void LaunchAddCredentialsActivity()
+        private void LaunchAddCredentialsActivity(bool ModifyData=false,int id=-1)
         {
             Intent intent = new Intent(this, typeof(AddCredentials));
-            StartActivityForResult(intent, _RequestCode_Add_Credentials);
+            if(!ModifyData)
+            {
+                intent.PutExtra("IsModify", false);
+                StartActivityForResult(intent, _RequestCode_Add_Credentials);
+            }
+            else//ModifyData == true
+            {               
+                intent.PutExtra("ID", id);
+                intent.PutExtra("IsModify", true);
+                StartActivityForResult(intent,_RequestCode_Modify_Credentials);
+            }
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
-            if(requestCode == _RequestCode_Add_Credentials && resultCode == Result.Ok)
+            if((requestCode == _RequestCode_Add_Credentials || requestCode == _RequestCode_Modify_Credentials ) && resultCode == Result.Ok)
             {
-                LoadData();
+                RefreshData();
             }
-            
+        }
+
+        private void ShowGenericError(string title = "This feature is under construction")
+        {
+            Toast.MakeText(this, title, Android.Widget.ToastLength.Long).Show();
+        }
+        private void LoadData()
+        {
+            listSource = db.FetchAllCredentials();
+            adapter = new ListViewAdapter(this, listSource);
+            listView.Adapter = adapter;
+        }
+
+        private void RefreshData()
+        {
+            if(null != adapter)
+            {
+                listSource = db.FetchAllCredentials();
+                adapter.ResetData(listSource);
+            }
         }
 
     }

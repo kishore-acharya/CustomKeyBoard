@@ -4,6 +4,7 @@ using Android.Content;
 using Android.Graphics;
 using Android.InputMethodServices;
 using Android.OS;
+using Android.Preferences;
 using Android.Runtime;
 using Android.Support.V4.Content;
 using Android.Views;
@@ -19,9 +20,8 @@ namespace CustomKeyBoard
     [Service(Permission = "android.permission.BIND_INPUT_METHOD", Label = "Kishore Keyboard")]
     [MetaData("android.view.im", Resource = "@xml/method")]
     [IntentFilter(new string[] { "android.view.InputMethod" })]
-    public class MainActivity : InputMethodService, KeyboardView.IOnKeyboardActionListener
+    public class KeyboardService : InputMethodService, KeyboardView.IOnKeyboardActionListener
     {
-
         private KishoreKeyboardView kv;
         private IInputConnection ic;
         private Keyboard keyboard;
@@ -48,9 +48,8 @@ namespace CustomKeyBoard
 
         public void LaunchCredentialActivity()
         {
-           Intent intent = new Intent(this, typeof(StoreCredentialsActivity));
-           
-           StartActivity(intent);////
+           Intent intent = new Intent(this, typeof(ManageCredentials));          
+           StartActivity(intent);
         }
 
         public override View OnCreateInputView()
@@ -84,7 +83,34 @@ namespace CustomKeyBoard
             // return kv;
 
         }
-        
+
+        public override void OnBindInput()
+        {
+          //  ShowGenericError("OnBindInput called");
+            base.OnBindInput();
+        }
+
+        public override void OnWindowShown()
+        {
+           // ShowGenericError("OnWindowShown Called");
+            ComitAutofill();
+            base.OnWindowShown();
+        }
+        public void ComitAutofill()
+        {
+            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(ApplicationContext);
+            string value = prefs.GetString("Passw0rd","No_Autofill");
+           if(value!="No_Autofill")
+            {
+                ic = CurrentInputConnection;
+                ic.CommitText(value,value.Length);
+            }
+          
+            ISharedPreferencesEditor editor = prefs.Edit();
+            editor.PutString("Passw0rd","No_Autofill");
+            editor.Apply();
+        }
+
         public override View OnCreateCandidatesView()//THE UPPER STRIP
         {
 
@@ -125,6 +151,7 @@ namespace CustomKeyBoard
            // ShowGenericError();
             //throw new NotImplementedException();
         }
+       
 
         private void PopulatePreviewDisabledList()
         {
@@ -206,10 +233,11 @@ namespace CustomKeyBoard
 
 
         }
-
+      
         public override bool OnKeyDown([GeneratedEnum] Android.Views.Keycode keyCode, KeyEvent e)
         {
-            ShowGenericError("OnKeydown is activated");
+
+            ShowGenericError("on keydown called");
             return base.OnKeyDown(keyCode, e);
         }
 

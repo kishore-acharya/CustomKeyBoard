@@ -18,59 +18,42 @@ namespace CustomKeyBoard.Services
         //Constants Declaration Start++
         private const string DBPath
          = "CredentialsStorage.db";
+        private const string AutofillDBPath
+            = "AutofillStorage.db";
         //Constant Declaration end++
 
         //Public Method Start++
         public DataBaseService()
         {
             CreateDatabase();
+
         }
         private List<Credentials> Allcredentials = new List<Credentials>();
+
+        public Credentials FetchCredentialsFromID(int id)
+        {
+            return selectTable(id);
+        }
         public List<Credentials> FetchAllCredentials()
         {
-
             Allcredentials = GetAllCredentialFromDB();
-
-            //Mock Start
-            Credentials MockCred = new Credentials();
-            MockCred.UserName = "adsfkjasd";
-            MockCred.Password = "sdfjalskdf";
-            MockCred.Domain = "sfdj;alsdf";
-            List<Credentials> MockCredentialList = new List<Credentials>();
-            MockCredentialList.Add(MockCred);
-            return MockCredentialList;
-            //Mock end
-
-            //Actual Start
-            //return Allcredentials;
+            return Allcredentials;
         }
         public void SaveCredentials(Credentials credentials)
         {
 
             InsertIntoTable(credentials);
         }
-        public void DeleteCredentials(int id)
+        public int DeleteCredentials(int id)
         {
-
-            DeleteFromTableByPrimaryKey(id);
+            return DeleteFromTableByPrimaryKey<Credentials>(id);
         }
         public void UpdateCredentials(Credentials credentials)
         {
-            UpdateInDB(credentials);
+            UpdateIntoTable(credentials);
         }
 
-        //public void FetchCredentialsByDomain(string domain)
-        //{
-        //    //TODO
-        //}
-        //public void FetchCredentialsByUser(string user)
-        //{
-        //    //TODO
-        //}
-        //public void FetchCredentialsByDomainAndUser(string domain,string user)
-        //{
-        //    //TODO
-        //}
+
 
         //Public Methods End++
 
@@ -104,6 +87,23 @@ namespace CustomKeyBoard.Services
         /// </summary>
         /// <returns></returns>
         readonly string folder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+
+        public bool CreateDatabaseForAutoFill()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(System.IO.Path.Combine(folder, AutofillDBPath)))
+            {
+                try
+                {
+                    connection.CreateTable<AutofillData>();
+                    return true;
+                }
+                catch(SQLiteException ex)
+                {
+                    return false;
+                }
+            }
+        }
+        
         private bool CreateDatabase()
         {
             try
@@ -126,10 +126,19 @@ namespace CustomKeyBoard.Services
         /// Delete from DB by PrimaryKey
         /// </summary>
         /// <param name="id"></param>
-        private void DeleteFromTableByPrimaryKey(int id)
+        private int DeleteFromTableByPrimaryKey<T>(object primaryKey)
         {
-            //Todo
-            throw new NotImplementedException();
+            using (var connection = new SQLiteConnection(System.IO.Path.Combine(folder, DBPath)))
+            {
+                try
+                {
+                    return connection.Delete<T>(primaryKey);
+                }
+                catch
+                {
+                    throw;
+                }
+            }
         }
 
         /// <summary>
@@ -157,30 +166,46 @@ namespace CustomKeyBoard.Services
         /// DB Updation Mehod
         /// </summary>
         /// <param name="credentials"></param>
-        private void UpdateInDB(Credentials credentials)
+        private int UpdateIntoTable<T>(T credentials)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var connection = new SQLiteConnection(System.IO.Path.Combine(folder, DBPath)))
+                {
+                    //DeleteFromTableByPrimaryKey(credentials.Id);
+                    //connection.Query<Credentials>("UPDATE Credentials set Domain=?, UserName=?, Password=? Where Id=?", credentials.Domain, credentials.UserName, credentials.Password, credentials.Id);
+                    return connection.Update(credentials, typeof(T));
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                Console.WriteLine("sql is fucked, exception in updating into table in DataBase");
+            }
+            return -1;
         }
+
 
         /// <summary>
         /// Select From DB method
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public bool selectTable(int Id)
+        public Credentials selectTable(int Id)
         {
+            Credentials temp_credentials;
             try
             {
                 using (var connection = new SQLiteConnection(System.IO.Path.Combine(folder, DBPath)))
                 {
-                    connection.Query<Credentials>("SELECT * FROM Credentials Where Id=?", Id);
-                    return true;
+                    temp_credentials = connection.Query<Credentials>("SELECT * FROM Credentials Where Id=?", Id)[0];
+                    return temp_credentials;
                 }
             }
             catch (SQLiteException ex)
             {
 
-                return false;
+                Console.WriteLine("sql is fucked, exception in updating into table in DataBase");
+                return null;
             }
         }
     }

@@ -12,13 +12,19 @@ namespace CustomKeyBoard
 {
     public class ListViewAdapter : BaseAdapter<Credentials>
     {
-        private StoreCredentialsActivity storeCredentialsActivity;
+        private readonly Context context;
         private List<Credentials> listSource;
 
-        public ListViewAdapter(StoreCredentialsActivity storeCredentialsActivity, List<Credentials> listSource)//gets list source from db
+        public ListViewAdapter(Context context, List<Credentials> listSource)//gets list source from db
         {
-            this.storeCredentialsActivity = storeCredentialsActivity;
+            this.context = context;
             this.listSource = listSource;
+        }
+
+        public void ResetData(List<Credentials> listSource)
+        {
+            this.listSource = listSource;
+            NotifyDataSetChanged();
         }
 
         public override Credentials this[int position]
@@ -31,14 +37,12 @@ namespace CustomKeyBoard
 
         public override int Count
         {
-
             get { return listSource.Count; }
 
         }
         public override long GetItemId(int position)
         {
             return listSource[position].Id;
-
         }
        
 
@@ -47,33 +51,45 @@ namespace CustomKeyBoard
             return null;
         }
 
-      
-
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            View row = convertView;
+            ViewHolder viewHolder = null;
+            
             try
             {
-                if (row == null)
+                if (convertView == null)
                 {
-                    row = LayoutInflater.From(storeCredentialsActivity).Inflate(Resource.Layout.CredentialListTemplate , null, false);
+                    convertView = LayoutInflater.From(context).Inflate(Resource.Layout.CredentialListTemplate , null, false);
+                    viewHolder = new ViewHolder
+                    {
+                        txtUserName = convertView.FindViewById<TextView>(Resource.Id.User_field),
+                        txtPass = convertView.FindViewById<TextView>(Resource.Id.Pass_field),
+                        txtDomain = convertView.FindViewById<TextView>(Resource.Id.Domain_field)
+                    };
+                    convertView.Tag = viewHolder;
                 }
-                TextView txtUserName = row.FindViewById<TextView>(Resource.Id.User_field);
-                txtUserName.Text = listSource[position].UserName;
-                TextView txtPass = row.FindViewById<TextView>(Resource.Id.Pass_field);
-                txtPass.Text = listSource[position].Password;
-                TextView txtDomain = row.FindViewById<TextView>(Resource.Id.Domain_field);
-                txtDomain.Text = listSource[position].Domain;
+                else
+                {
+                    viewHolder = convertView.Tag as ViewHolder;
+                }
+
+
+                viewHolder.txtUserName.Text = listSource[position].UserName;
+                viewHolder.txtPass.Text = listSource[position].Password;
+                viewHolder.txtDomain.Text = listSource[position].Domain;
             }
             catch (Java.Lang.Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
-            finally { }
-            return row;
+            return convertView;
         }
 
-
-
+        private class ViewHolder : Java.Lang.Object
+        {
+            public TextView txtUserName;
+            public TextView txtPass;
+            public TextView txtDomain;
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Android.AccessibilityServices;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.InputMethodServices;
@@ -22,41 +21,44 @@ namespace CustomKeyBoard
     [IntentFilter(new string[] { "android.view.InputMethod" })]
     public class KeyboardService : InputMethodService, KeyboardView.IOnKeyboardActionListener
     {
-        private KishoreKeyboardView kv;
+        private const int Vibation_Amp = 30;
+        private const int Vibration_MS = 10;
+
+        private IList<int> _PreviewDisabledKeys;
+        private bool CapsFlag = false;
+        private Keyboard CapsKeyboard;
+
         private IInputConnection ic;
         private Keyboard keyboard;
-        private Keyboard CapsKeyboard;
-      
-        private bool CapsFlag = false;
-        private string selectedText;
-        private Vibrator vibrator;
-        private IList<int> _PreviewDisabledKeys;
+        private KishoreKeyboardView kv;
         private ImageView PassButton;
+        private string selectedText;
+        private SpellCheckerSession SplSession;
         private TextView Suggestion1, Suggestion2, Suggestion3;
-        private const int Vibration_MS = 10;
-        private const int Vibation_Amp = 30;
+        private Vibrator vibrator;
+        private bool wasreleased = true;
+        private Keyboard SymbolsKeyboard;
 
+        public bool SymbolsFlag { get; private set; }
 
         public override void OnCreate()
         {
 
             PopulatePreviewDisabledList();
             vibrator = (Vibrator)GetSystemService(VibratorService);
-            Console.WriteLine("OnCreate call , Debug starts here");//debug         
+            Console.WriteLine("OnCreate call , Debug starts here");//
             base.OnCreate();
         }
 
-        public void LaunchCredentialActivity()
-        {
-           Intent intent = new Intent(this, typeof(ManageCredentials));          
-           StartActivity(intent);
-        }
+
+
+
 
         public override View OnCreateInputView()
         {
             Console.WriteLine("OnCreateInputView Start");
             View parent = LayoutInflater.Inflate(Resource.Layout.strip, null);
-            kv = (KishoreKeyboardView)parent.FindViewById<KishoreKeyboardView>(Resource.Id.Keyboard);
+            kv = parent.FindViewById<KishoreKeyboardView>(Resource.Id.Keyboard);
             //kv = (KishoreKeyboardView)LayoutInflater.Inflate(Resource.Layout.keyboard, null);
             keyboard = new Keyboard(this, Resource.Xml.qwerty);
             kv.Keyboard = keyboard;
@@ -66,12 +68,14 @@ namespace CustomKeyBoard
             w.SetNavigationBarColor(new Color(ContextCompat.GetColor(this, Resource.Color.keyboard_background_color))); //to change bottom navigation bar color   
 
 
-            PassButton = (ImageView)parent.FindViewById<ImageView>(Resource.Id.pass_button_view);//autofill buton
+            PassButton = parent.FindViewById<ImageView>(Resource.Id.pass_button_view);//autofill buton
             PassButton.Click += PassButton_Click;
 
-            Suggestion1 = (TextView)parent.FindViewById<TextView>(Resource.Id.suggestion1);
-            Suggestion2 = (TextView)parent.FindViewById<TextView>(Resource.Id.suggestion2);
-            Suggestion3 = (TextView)parent.FindViewById<TextView>(Resource.Id.suggestion3);
+
+            ////bindings
+            Suggestion1 = parent.FindViewById<TextView>(Resource.Id.suggestion1);
+            Suggestion2 = parent.FindViewById<TextView>(Resource.Id.suggestion2);
+            Suggestion3 = parent.FindViewById<TextView>(Resource.Id.suggestion3);
             Suggestion1.Click += Suggestion1_Click;
             Suggestion2.Click += Suggestion2_Click;
             Suggestion3.Click += Suggestion3_Click;
@@ -80,52 +84,30 @@ namespace CustomKeyBoard
             Console.WriteLine("Onclick event created");
 
             return parent;
-            // return kv;
+
+
+        }
+        private void PassButton_Click(object sender, EventArgs e)
+        {
+
+
+            LaunchCredentialActivity();
+
 
         }
 
-        public override void OnBindInput()
+
+        private void PopulatePreviewDisabledList()
         {
-          //  ShowGenericError("OnBindInput called");
-            base.OnBindInput();
+            if (null != _PreviewDisabledKeys) return;
+            _PreviewDisabledKeys = new List<int> { this.Resources.GetInteger(Resource.Integer.code_space), this.Resources.GetInteger(Resource.Integer.code_done),
+                                                    this.Resources.GetInteger(Resource.Integer.code_del), this.Resources.GetInteger(Resource.Integer.code_caps),
+             this.Resources.GetInteger(Resource.Integer.code_symbols)};
         }
 
-        public override void OnWindowShown()
-        {
-           // ShowGenericError("OnWindowShown Called");
-            ComitAutofill();
-            base.OnWindowShown();
-        }
-        public void ComitAutofill()
-        {
-            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(ApplicationContext);
-            string value = prefs.GetString("Passw0rd","No_Autofill");
-           if(value!="No_Autofill")
-            {
-                ic = CurrentInputConnection;
-                ic.CommitText(value,value.Length);
-            }
-          
-            ISharedPreferencesEditor editor = prefs.Edit();
-            editor.PutString("Passw0rd","No_Autofill");
-            editor.Apply();
-        }
-
-        public override View OnCreateCandidatesView()//THE UPPER STRIP
+        private void Suggestion1_Click(object sender, EventArgs e)
         {
 
-            Suggestion1 = Suggestion2 = Suggestion3 = null;
-            return base.OnCreateCandidatesView();
-          
-        }
-
-        public void ShowGenericError(string title = "This feature is under construction")
-        {
-            Toast.MakeText(this, title, Android.Widget.ToastLength.Long).Show();
-        }
-
-        private void Suggestion3_Click(object sender, EventArgs e)
-        {
             ShowGenericError();
 
         }
@@ -136,109 +118,10 @@ namespace CustomKeyBoard
 
         }
 
-        private void Suggestion1_Click(object sender, EventArgs e)
+        private void Suggestion3_Click(object sender, EventArgs e)
         {
-            
             ShowGenericError();
 
-        }
-
-        private void PassButton_Click(object sender, EventArgs e)
-        {
-
-            Console.WriteLine("Onclick event exectured");
-            LaunchCredentialActivity();            
-           // ShowGenericError();
-            //throw new NotImplementedException();
-        }
-       
-
-        private void PopulatePreviewDisabledList()
-        {
-            if (null != _PreviewDisabledKeys) return;
-            _PreviewDisabledKeys = new List<int> { this.Resources.GetInteger(Resource.Integer.code_space), this.Resources.GetInteger(Resource.Integer.code_done),
-                                                    this.Resources.GetInteger(Resource.Integer.code_del), this.Resources.GetInteger(Resource.Integer.code_caps),
-             this.Resources.GetInteger(Resource.Integer.code_symbols)};
-        }
-
-        public void OnKey([GeneratedEnum] Android.Views.Keycode primaryCode, [GeneratedEnum] Android.Views.Keycode[] keyCodes)
-        {
-
-            Console.WriteLine("On key invoked , value is " + primaryCode);
-            ic = CurrentInputConnection;//to get current input connection
-
-
-            if (ic == null)
-            {
-                return;
-            }
-
-            switch (primaryCode)
-            {
-                case (Android.Views.Keycode.Del):
-                    selectedText = ic.GetSelectedText(0);
-                    if (string.IsNullOrEmpty(selectedText))
-                    {
-                        ic.DeleteSurroundingText(1, 0);
-                    }
-                    else
-                    {
-                        ic.CommitText("", 1);
-                       
-                    }
-                    break;
-                case (Android.Views.Keycode.CapsLock)://To toggle caps lock
-
-
-                    if (!CapsFlag)//caps lock was off
-                    {
-                        CapsKeyboard = new Keyboard(this, Resource.Xml.caps_qwerty);
-                        kv.Keyboard = CapsKeyboard;
-                        kv.OnKeyboardActionListener = this;
-                        CapsFlag = true;
-                    }
-                    else//caps lock was already onon
-                    {
-                        kv.Keyboard = keyboard;
-                        kv.OnKeyboardActionListener = this;
-                        CapsFlag = false;
-                    }
-                    break;
-                case (Android.Views.Keycode.S)://this is because ASCII value 115 for s is same as android enum for caps lock
-                    {
-                        ic.CommitText("s", 1);
-
-                        break;
-                    }
-                case (Android.Views.Keycode.C)://this is because ASCII value 115 for C (caps) is same as android enum for backspace
-                    {
-                        ic.CommitText("C", 1);
-
-                        break;
-                    }
-
-
-                default:
-                    char code = (char)(primaryCode);
-
-
-
-                    ic.CommitText(code.ToString(), 1);// to provides the keystroke to input area according to ascai value of code
-
-
-                    break;
-            }
-            Console.WriteLine("On key call end");//debug
-            Console.WriteLine("Preview enabled value is: " + kv.PreviewEnabled);
-
-
-        }
-      
-        public override bool OnKeyDown([GeneratedEnum] Android.Views.Keycode keyCode, KeyEvent e)
-        {
-
-            ShowGenericError("on keydown called");
-            return base.OnKeyDown(keyCode, e);
         }
 
 
@@ -263,30 +146,182 @@ namespace CustomKeyBoard
 
         }
 
-        public void SwipeLeft()
+        public void ComitAutofill()
         {
+            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(ApplicationContext);
+            string value = prefs.GetString("Passw0rd", "No_Autofill");
+            if (value != "No_Autofill")
+            {
+                ic = CurrentInputConnection;
+                ic.CommitText(value, value.Length);
+            }
+
+            ISharedPreferencesEditor editor = prefs.Edit();
+            editor.PutString("Passw0rd", "No_Autofill");
+            editor.Apply();
         }
 
-        public void SwipeRight() { }
-
-        public void SwipeDown()
+        public void LaunchCredentialActivity()
         {
-            kv.Keyboard = keyboard;
-            kv.OnKeyboardActionListener = this;
-            CapsFlag = false;
+            Intent intent = new Intent(this, typeof(ManageCredentials));
+            StartActivity(intent);
         }
 
-        public void SwipeUp()
+
+        public override void OnBindInput()
         {
-            CapsKeyboard = new Keyboard(this, Resource.Xml.caps_qwerty);
-            kv.Keyboard = CapsKeyboard;
-            kv.OnKeyboardActionListener = this;
-            CapsFlag = true;
+            //  ShowGenericError("OnBindInput called");
+            base.OnBindInput();
         }
 
-        private int compcode;
-        private Android.Views.Keycode lastCode = Android.Views.Keycode.Unknown;
-        private bool wasreleased = true;
+
+
+
+        ///++++Suggestions Implementation++++/////
+        public void OnGetSentenceSuggestions(SentenceSuggestionsInfo[] results)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void OnGetSuggestions(SuggestionsInfo[] results)//populates the recieved suggestion from spellchcker seession
+        {
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < results.Length; i++)
+            {
+                //Returned suggestions are contained in SugesstionInfo  
+                int len = results[0].SuggestionsCount;
+                sb.Append('\n');
+                for (int j = 0; j < len; j++) sb.Append(results[i].GetSuggestionAt(j) + " , ");
+                sb.Append("(" + len + ")");
+            }
+
+            Suggestion1.Text = (sb.ToString());
+
+            ShowGenericError("value of sb is " + sb.ToString());
+            //string[] res = sb.Split(',');
+            //Suggestion1.Text = res[0];
+            //Suggestion2.Text = res[1];
+            //Suggestion3.Text = res[2];
+        }
+        public void OnKey([GeneratedEnum] Android.Views.Keycode primaryCode, [GeneratedEnum] Android.Views.Keycode[] keyCodes)//Main keyboard input method
+        {
+
+
+
+            ic = CurrentInputConnection;//to get current input connection
+
+            switch (primaryCode)
+            {
+                case (Android.Views.Keycode.Del):
+                    selectedText = ic.GetSelectedText(0);
+                    if (string.IsNullOrEmpty(selectedText))
+                    {
+                        ic.DeleteSurroundingText(1, 0);
+                    }
+                    else
+                    {
+                        ic.CommitText(string.Empty, 1);
+
+                    }
+                    break;
+                case (Android.Views.Keycode.CapsLock)://To toggle caps lock
+
+
+                    if (!CapsFlag)//caps lock was off
+                    {
+                        CapsKeyboard = new Keyboard(this, Resource.Xml.caps_qwerty);
+                        kv.Keyboard = CapsKeyboard;
+                        kv.OnKeyboardActionListener = this;
+
+                        CapsFlag = true;
+                    }
+                    else//caps lock was already onon
+                    {
+                        kv.Keyboard = keyboard;
+                        kv.OnKeyboardActionListener = this;
+                        CapsFlag = false;
+                    }
+                    break;
+                case (Android.Views.Keycode.S)://this is because ASCII value 115 for s is same as android enum for caps lock
+                    {
+                        ic.CommitText("s", 1);
+
+                        break;
+                    }
+                case (Android.Views.Keycode.ButtonA)://this is because ASCII value 115 for s is same as android enum for caps lock
+                    {
+                        ic.CommitText("/", 1);
+
+                        break;
+                    }
+                case (Android.Views.Keycode.C)://this is because ASCII value 115 for C (caps) is same as android enum for backspace
+                    {
+                        ic.CommitText("C", 1);
+
+                        break;
+                    }
+              
+                case (Android.Views.Keycode.Num3)://actually this is done sbutton handling , as i am using Code=10 for my done button, which is code for unused num3
+                    {
+                        ic.PerformEditorAction(ImeAction.Send);
+                        ic.PerformEditorAction(ImeAction.Go);
+                        ic.PerformEditorAction(ImeAction.Done);
+
+
+                        SplSession.Close();//closing spell check session
+
+                        break;
+                    }
+
+
+
+
+
+                default:
+
+                    if((int)primaryCode== 1115)
+                    {
+                        if (!SymbolsFlag)//symbol view was off
+                        {
+                            SymbolsKeyboard = new Keyboard(this, Resource.Xml.Symbols);
+                            kv.Keyboard = SymbolsKeyboard;
+                            kv.OnKeyboardActionListener = this;
+                            SymbolsFlag = true;
+                        }
+                        else//Symbol view was on
+                        {
+                            kv.Keyboard = keyboard;
+                            kv.OnKeyboardActionListener = this;
+                            SymbolsFlag = false;
+                        }
+                        break;
+                    }
+
+                    char code = (char)(primaryCode);
+
+
+
+                    ic.CommitText(code.ToString(), 1);// to provides the keystroke to input area according to ascai value of code
+
+
+
+                    break;
+
+            }
+
+
+
+
+
+
+
+        }
+
+
+
+
 
         public void OnPress([GeneratedEnum] Android.Views.Keycode primaryCode)
         {
@@ -325,6 +360,45 @@ namespace CustomKeyBoard
         {
             //throw new System.NotImplementedException();
         }
+
+        public override void OnWindowShown()
+        {
+            // ShowGenericError("OnWindowShown Called");
+            ComitAutofill();
+            base.OnWindowShown();
+        }
+
+
+
+        public void ShowGenericError(string title = "This feature is under construction")
+        {
+            Toast.MakeText(this, title, Android.Widget.ToastLength.Long).Show();
+        }
+
+        public void SwipeDown()
+        {
+            kv.Keyboard = keyboard;
+            kv.OnKeyboardActionListener = this;
+            CapsFlag = false;
+        }
+
+        public void SwipeLeft()
+        {
+        }
+
+        public void SwipeRight() { }
+
+        public void SwipeUp()
+        {
+            CapsKeyboard = new Keyboard(this, Resource.Xml.caps_qwerty);
+            kv.Keyboard = CapsKeyboard;
+            kv.OnKeyboardActionListener = this;
+            CapsFlag = true;
+        }
+
+
+
+
 
 
     }

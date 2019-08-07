@@ -4739,6 +4739,9 @@ namespace CustomKeyBoard
 			// aapt resource value: 0x7f070002
 			public const int qwerty = 2131165186;
 			
+			// aapt resource value: 0x7f070003
+			public const int Symbols = 2131165187;
+			
 			static Xml()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

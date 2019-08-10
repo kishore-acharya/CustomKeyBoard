@@ -46,6 +46,7 @@ namespace CustomKeyBoard
 
             PopulatePreviewDisabledList();
             vibrator = (Vibrator)GetSystemService(VibratorService);
+            
             Console.WriteLine("OnCreate call , Debug starts here");//
             base.OnCreate();
         }
@@ -148,6 +149,7 @@ namespace CustomKeyBoard
 
         public void ComitAutofill()
         {
+           
             ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(ApplicationContext);
             string value = prefs.GetString("Passw0rd", "No_Autofill");
             if (value != "No_Autofill")
@@ -364,8 +366,17 @@ namespace CustomKeyBoard
         public override void OnWindowShown()
         {
             // ShowGenericError("OnWindowShown Called");
-            ComitAutofill();
+
+           
+           // ComitAutofill();
             base.OnWindowShown();
+        }
+
+        public override void OnWindowHidden()
+        {
+            ComitAutofill();
+            ShowGenericError("Onwidnowhidden called");
+            base.OnWindowHidden();
         }
 
 
